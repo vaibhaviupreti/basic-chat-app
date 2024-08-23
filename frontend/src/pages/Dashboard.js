@@ -13,7 +13,7 @@ function Dashboard() {
   const handleLogout = () => {
     localStorage.removeItem('token');
     sessionStorage.clear();
-    navigate('/'); // Redirect to login page
+    navigate('/'); 
   };
 
   return (

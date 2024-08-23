@@ -18,7 +18,7 @@ function Register() {
 
   useEffect(() => {
     if (location.state && location.state.user) {
-      setFormData(location.state.user); //using rest operator here to create new const
+      setFormData(location.state.user); 
       console.log("locatn,",location?.state);
       setEditMode(true);
     }
@@ -43,13 +43,6 @@ function Register() {
         console.log(response.data);
         alert('Updated successfully!');
       } else {
-        // Create new user
-        // const response = await axios.post(`${API_BASE_URL}/create_users`, formData, {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //     // 'Content-Type': 'application/json',
-        //   }
-        // });
         const response = await axios.post(`${API_BASE_URL}/create_users`, formData, {
           headers: {
             Authorization: `Bearer ${token}` 
@@ -69,8 +62,6 @@ function Register() {
       console.error("error in creating new user: ",error);
     }
   };
-
-  // const isEditMode = formData.id !== '';
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
