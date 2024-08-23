@@ -10,10 +10,11 @@ const drawerWidth = 240;
 function Dashboard() {
   const navigate = useNavigate();
 
-  const handleLogout=()=> {
+  const handleLogout = () => {
     localStorage.removeItem('token');
     sessionStorage.clear();
-  }
+    navigate('/'); // Redirect to login page
+  };
 
   return (
     <div style={{ display: 'flex' }}>
@@ -23,9 +24,7 @@ function Dashboard() {
           <Typography variant="h6" noWrap>
             Dashboard
           </Typography>
-          {/* <Typography onClick={handleLogout} variant="h6" noWrap> */}
-            <Button variant='contained'color='error' onClick={handleLogout}>Logout</Button>
-          {/* </Typography> */}
+          <Button variant='contained' color='error' onClick={handleLogout}>Logout</Button>
         </Toolbar>
       </AppBar>
       <Drawer
