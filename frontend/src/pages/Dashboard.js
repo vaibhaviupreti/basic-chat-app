@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Typography } from '@mui/material';
+import { Drawer, List, ListItem, ListItemText, CssBaseline, AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { useNavigate, Routes, Route } from 'react-router-dom';
 import Register from '../components/Register';
 import UserList from '../components/UsersList';
@@ -10,14 +10,22 @@ const drawerWidth = 240;
 function Dashboard() {
   const navigate = useNavigate();
 
+  const handleLogout=()=> {
+    localStorage.removeItem('token');
+    sessionStorage.clear();
+  }
+
   return (
     <div style={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" style={{ width: `calc(100% - ${drawerWidth}px)`, marginLeft: drawerWidth }}>
-        <Toolbar>
+        <Toolbar style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
           <Typography variant="h6" noWrap>
             Dashboard
           </Typography>
+          {/* <Typography onClick={handleLogout} variant="h6" noWrap> */}
+            <Button variant='contained'color='error' onClick={handleLogout}>Logout</Button>
+          {/* </Typography> */}
         </Toolbar>
       </AppBar>
       <Drawer
